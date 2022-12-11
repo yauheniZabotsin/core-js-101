@@ -89,7 +89,7 @@ function getPolynom(...args) {
  */
 function memoize(func) {
   let newFun = false;
-  return function () {
+  return () => {
     if (!newFun) newFun = func();
     return newFun;
   };
@@ -112,7 +112,7 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func, attempts) {
-  return function () {
+  return () => {
     let lastRes = null;
     for (let i = 0; i < attempts; i += 1) {
       try {
@@ -191,7 +191,7 @@ function partialUsingArguments(/* fn, ...args1 */) {
  */
 function getIdGeneratorFunction(startFrom) {
   let countId = startFrom - 1;
-  return function () {
+  return () => {
     countId += 1;
     return countId;
   };
